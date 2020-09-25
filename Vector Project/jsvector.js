@@ -30,7 +30,7 @@ JSVector.prototype.setDirection = function(angle){
 
 // Get the direction (angle) of the vector
 JSVector.prototype.getDirection = function(){
-
+	return Math.atan2(this.y, this.x);
 }
 
 // Add another vector to this vector
@@ -41,7 +41,8 @@ JSVector.prototype.add = function(v2){
 
 // Subtract another vector from this vector
 JSVector.prototype.sub = function(v2){
-
+	this.x -= v2.x;
+  this.y -= v2.y;
 }
 
 // Class method to return a new vector that is the sum of two vectors
@@ -100,10 +101,10 @@ JSVector.prototype.angleBetween = function(v2){
 
 // Make a copy of this vector
 JSVector.prototype.copy = function(){
-
+  return new Vector(this.x, this.y);
 }
 
 // Override inherited toString() to describe this instance
 JSVector.prototype.toString = function() {
-
+  return 'x: ' + this.x + ', y: ' + this.y;
 }
