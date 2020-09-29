@@ -68,22 +68,25 @@ JSVector.prototype.divide = function(scalar){
 
 // Normalize this vector so that it has a magnitude of 1
 JSVector.prototype.normalize = function(){
-
+	var magnitude = this.getMagnitude();
+	this.x /= magnitude;
+	this.y /= magnitude;
 }
 
 // Limit the magnitude of this vector
 JSVector.prototype.limit = function(lim){
-
+	this.normalize();
+    this.multiply(lim);
 }
 
 // Get the distance between this vector and another one
 JSVector.prototype.distance = function(v2){
-
+	return Math.sqrt(this.x * this.x + this.y * this.y);
 }
 
 // Get square of the distance between this vector and another one
 JSVector.prototype.distanceSquared = function(v2){
-
+	return vec.x * vec.x + vec.y * vec.y;
 }
 
 // Rotate this vector by some number of radians
@@ -91,12 +94,17 @@ JSVector.prototype.distanceSquared = function(v2){
 //                           |  sin   +cos  |
 
 JSVector.prototype.rotate = function(angle) {
-
+	var x = this.x,
+	var y = this.y,
+	cosVal = Math.cos(angle),
+	sinVal = Math.sin(angle);
+	this.x = x * cosVal - y * sinVal;
+	this.y = x * sinVal + y * cosVal;
 }
 
 // Get the angle between this vector and another one
 JSVector.prototype.angleBetween = function(v2){
-
+	return(this.angle() - v2.angle());
 }
 
 // Make a copy of this vector
