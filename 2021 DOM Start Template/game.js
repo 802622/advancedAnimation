@@ -11,7 +11,7 @@ function Game(){
 
     //   create the array of bubble objects
     this.bubbles = [];
-    let numBubbles = 150;
+    let numBubbles = 50;
     for(var i = 0; i < numBubbles; i++){
         var x, y, dx, dy, diam, clr, r, g, b;
         x = Math.random()*this.canvas.width;
