@@ -1,0 +1,14 @@
+#canvas {
+    background-color: black;
+}
+
+body {
+   background-color: black;
+   margin:0;
+ }
+
+#wrapperDiv {
+ width:1100px;
+ height:800px;
+ background-color:black;
+}
