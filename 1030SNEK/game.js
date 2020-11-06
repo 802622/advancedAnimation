@@ -1,19 +1,14 @@
 function Game(){
-
-    this.gamePaused = false;    // the game may be paused or not
-    this.ga = new GameArea();   // create all the dom elements
-    // get the canvas as a property of the game
-    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
-    this.canvas = document.getElementById('canvas');
-    // get the context
-    // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
-    this.ctx = this.canvas.getContext('2d'); // This is the context
+    this.gamePaused = false;    
+    this.ga = new GameArea();   
+    this.canvas = document.getElementById('canvas');   
+    this.ctx = this.canvas.getContext('2d'); 
     this.snakes = [];
     this.createSnakes(this.canvas, 10);
 
 }
 
-// function to run the game each animation cycle
+
 Game.prototype.run = function(){
   if(!this.gamePaused){
     for(let i = 0; i < this.snakes.length; i++){

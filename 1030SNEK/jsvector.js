@@ -1,5 +1,5 @@
 // JSVector -- a Javascript 2D vector class
-//  Isabelle Cobb
+//  Nayan Smuek
 //  9/25-VectorLab
 // The class constructor
 function JSVector(x = 0,y = 0){
