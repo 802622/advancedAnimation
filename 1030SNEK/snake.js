@@ -27,16 +27,6 @@ Snake.prototype.render = function(){
       ctx.arc(this.segments[i].x, this.segments[i].y, 5, Math.PI*2, 0, false);
       ctx.stroke();
       ctx.fill();
-      // ctx.save();
-      // ctx.beginPath();
-      // ctx.translate(this.segments[i].x, this.segments[i].y);
-      // ctx.moveTo(-5, 0);
-      // ctx.lineTo(0, 10);
-      // ctx.lineTo(5, 0);
-      // ctx.lineTo(-5, 0);
-      // ctx.stroke();
-      // ctx.fill();
-      // ctx.restore();
     }
 
   }
