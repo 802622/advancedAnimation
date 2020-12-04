@@ -8,10 +8,12 @@ function Game(){
     this.ctx = this.canvas.getContext('2d'); // This is the context
 
     // setup 6 sliders
+    let updateSlider = function(e) {    // update event handler
         e.target.display.textContent = e.target.value;
     }
     for(i = 1; i <= 6; i++){    // for six sliders
         // use bracket notation to access slider properties of 'this'
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors
         let sliderId = "slider" + i;    // "slider1", "slider2", etc
         let slider = this[sliderId] = document.getElementById(sliderId);
         // each slider has a text field to display its value
