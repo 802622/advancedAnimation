@@ -12,7 +12,7 @@ function Game(){
     this.movers = [];
     this.createMovers(this.canvas, 10);
 
-    
+    this.psystem = new ParticleSystem(this.canvas.width/2, this.canvas.height/4);
 
 
     this.triangles = [];
@@ -64,6 +64,7 @@ Game.prototype.run = function(){
     for(var i=0;i<this.numVehicles;i++){
       this.vehiclesSquare[i].run(this.vehiclesSquare);
    }
+   this.psystem.run();
   }
 }
 
