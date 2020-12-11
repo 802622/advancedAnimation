@@ -12,23 +12,9 @@ function Game(){
     this.movers = [];
     this.createMovers(this.canvas, 10);
 
-    this.psystem = new ParticleSystem(this.canvas.width/2, this.canvas.height/4);
+    
 
 
-    this.triangles = [];
-    let numtriangles = 4;
-    for(var i = 0; i < numtriangles; i++){
-        var x, y, dx, dy, clr, r, g, b;
-        x = Math.random()*this.canvas.width;
-        y = Math.random()*this.canvas.height;
-        dx = Math.random()*6-3;
-        dy = Math.random()*6-3;
-        r = 255;
-        g = 255;
-        b = 255;
-        clr = "rgba(" + r + ", "+ g + ","+ b +")"
-        this.triangles.push(new triangle(x, y, dx, dy, clr));
-      }
 
       this.snakes = [];
       this.createSnakes(this.canvas, 6);
@@ -49,9 +35,6 @@ function Game(){
 
 Game.prototype.run = function(){
   if(!this.gamePaused){
-     for(let i = 0; i < this.triangles.length; i++){
-     this.triangles[i].run();
-    }
     for(let i = 0; i < this.movers.length; i++){
       this.movers[i].run();
     }
@@ -64,7 +47,6 @@ Game.prototype.run = function(){
     for(var i=0;i<this.numVehicles;i++){
       this.vehiclesSquare[i].run(this.vehiclesSquare);
    }
-   this.psystem.run();
   }
 }
 

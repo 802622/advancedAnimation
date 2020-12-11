@@ -6,6 +6,8 @@ function Orbiter(mover, orbiterRad, orbitRad, angle, angleVel, clr){
   this.location = JSVector.addGetNew(this.mover.location, this.rotator);
   this.angleVel = angleVel;
   this.clr = clr;
+
+  this.psystem = new ParticleSystem(this.mover.location.x, this.mover.location.y);
  }
 
 Orbiter.prototype.update = function(){
@@ -16,6 +18,9 @@ Orbiter.prototype.update = function(){
 
  Orbiter.prototype.render = function(){
    let ctx = game.ctx;
+
+   this.psystem.emitloc = this.location;
+   this.psystem.run();
 
    ctx.strokeStyle = this.clr;
    ctx.fillStyle = this.clr;

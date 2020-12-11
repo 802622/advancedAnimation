@@ -4,13 +4,15 @@ function ParticleSystem(x, y){
 }
 
 ParticleSystem.prototype.run = function(){
-  this.addParticle();
+  if(this.particles.length<4){
+    this.addParticle();
+  }
   this.update();
 }
 
 ParticleSystem.prototype.addParticle = function(){
   let clr = "white";
-  this.particles.push(new Particle(this.emitloc.x, this.emitloc.y, 5, clr));
+  this.particles.push(new Particle(this.emitloc.x, this.emitloc.y, 1, clr));
 }
 
 ParticleSystem.prototype.update = function(){

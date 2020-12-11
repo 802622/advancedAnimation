@@ -2,7 +2,7 @@ function Particle(x, y, rad, clr){
   this.location = new JSVector(x, y);//initialize location at emitter location
   this.velocity = new JSVector(Math.random()*2-1, Math.random()*2-2);
   this.acceleration = new JSVector(0, 0.05);
-  this.lifespan = 200;
+  this.lifespan = 100;
   this.radius = rad;
   this.clr = clr;
 }
