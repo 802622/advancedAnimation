@@ -7,6 +7,8 @@ function Mover(x, y, dx, dy, radius, clr, numOrbs){
   this.clr = clr;
   this.orbiters = [];
 
+  this.psystem = new ParticleSystem(this.location.x, this.location.y);
+
   
    for(let i = 0; i<numOrbs; i++){
      let a = i*(Math.PI*2)/numOrbs + this.orbitAngle;
@@ -34,6 +36,9 @@ Mover.prototype.run = function(){
 Mover.prototype.render = function(){
     let ctx = game.ctx;
     let b = game.movers;
+
+    this.psystem.emitloc = this.location;
+    this.psystem.run();
 
         ctx.strokeStyle = this.clr;
         ctx.fillStyle = this.clr;

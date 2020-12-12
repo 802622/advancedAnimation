@@ -9,6 +9,7 @@ function Vehicle(location){
   this.clr = "rgba(255, 0, 0, 1)";
   this.maxSpeed = 1;
   this.maxForce = 1.5;
+  this.finding = new JSVector(0,0);
 }
 
 Vehicle.prototype.run = function(vehicles){
@@ -80,6 +81,7 @@ Vehicle.prototype.flock = function(vehicles){
   flockForce.add(sep);
   flockForce.add(ali);
   flockForce.add(coh);
+  flockForce.add(this.finding.multiply(0.01));
   let maxForce = 1;
   flockForce.limit(maxForce);//limiting by maxForce
   this.acceleration.add(flockForce);
@@ -146,5 +148,17 @@ Vehicle.prototype.seek = function(target){
   desired.multiply(1.5);
   let steer = desired.sub(this.velocity);
   steer.limit(1);
+  this.steering = steer;
   return steer;
+}
+
+Vehicle.prototype.find = function(target){
+  let edited = target;
+  let desired = edited.sub(this.location);
+  desired.normalize();
+  desired.multiply(1.5);
+  let steer = desired.sub(this.velocity);
+  steer.limit(1);
+  this.finding = steer;
+  //return steer;
 }

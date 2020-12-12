@@ -42,7 +42,11 @@ Game.prototype.run = function(){
       this.snakes[i].run();
     }
     for(var i=0;i<this.numVehicles;i++){
-       this.vehicles[i].run(this.vehicles);
+      if(this.movers[6].psystem.particles.length<15){
+      let toSend = this.movers[6].location.copy();
+      this.vehicles[i].find(toSend);
+      }
+      this.vehicles[i].run(this.vehicles);
     }
     for(var i=0;i<this.numVehicles;i++){
       this.vehiclesSquare[i].run(this.vehiclesSquare);
