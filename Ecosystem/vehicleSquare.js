@@ -8,6 +8,7 @@ function VehicleSquare(location){
   this.neighborDist = 100;
   this.maxSpeed = 1;
   this.maxForce = 1.5;
+  this.lifespan = Math.floor(Math.random() * 200) + 100;
 }
 
 VehicleSquare.prototype.run = function(vehicles){
@@ -42,6 +43,7 @@ VehicleSquare.prototype.update = function(){
     this.velocity.add(this.acceleration);
     this.velocity.limit(1.5);
     this.location.add(this.velocity);
+    this.lifespan--;
 
   }
 
@@ -148,4 +150,15 @@ VehicleSquare.prototype.seek = function(target){
   let steer = desired.sub(this.velocity);
   steer.limit(1);
   return steer;
+}
+
+
+
+VehicleSquare.prototype.isDead = function(){
+  if(this.lifespan<0){
+    return true;
+  }
+  else{
+    return false;
+  }
 }

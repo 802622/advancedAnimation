@@ -3,12 +3,12 @@ function Snake(x, y, dx, dy, clr, numSegments){
     this.clr = clr;
     this.segments = [];
     this.numSegments = numSegments;
-  
+    this.framesElapsed = 0;
     //create segments
-    let d = 20;
+    this.d = 20;
     for(let i=0;i<this.numSegments;i++){
-      this.segments[i] = new JSVector(x-d, y-d);
-      d=d-20;
+      this.segments[i] = new JSVector(x-this.d, y-this.d);
+      this.d=this.d-20;
     }
   }
   
@@ -20,6 +20,7 @@ function Snake(x, y, dx, dy, clr, numSegments){
   
   
   Snake.prototype.render = function(){
+    this.framesElapsed++;
       let ctx = game.ctx;
       for(var i = 0;i<this.numSegments;i++){
         ctx.strokeStyle = this.clr;
@@ -43,6 +44,16 @@ function Snake(x, y, dx, dy, clr, numSegments){
             this.segments[i] = JSVector.addGetNew(this.segments[i-1], vB);
           }
          }
+       }
+       if(Math.random() < 0.5&&this.framesElapsed==100){
+        this.segments[this.segments.length+1] = new JSVector(this.snakeMover.x-this.d, this.snakeMover.y-this.d);
+        this.d=this.d-20;
+        console.log("newSnekBit");
+        this.framesElapsed = 0;
+       }else if(Math.random() > 0.5&&this.framesElapsed==100){
+        console.log("removed  SnekBit");
+        this.segments.splice(this.segments.length, 1);
+        this.framesElapsed = 0;
        }
   }
   

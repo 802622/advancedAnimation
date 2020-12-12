@@ -26,8 +26,8 @@ function Game(){
       }
 
       this.vehiclesSquare = [];
-      this.numVehicles = 100;
-      for(var i=0;i<this.numVehicles;i++){
+      this.numVehiclesSquare = 100;
+      for(var i=0;i<this.numVehiclesSquare;i++){
         this.vehiclesSquare.push(new VehicleSquare(new JSVector(Math.random()*this.canvas.width, Math.random()*this.canvas.height)));
       }
 }
@@ -48,8 +48,16 @@ Game.prototype.run = function(){
       }
       this.vehicles[i].run(this.vehicles);
     }
-    for(var i=0;i<this.numVehicles;i++){
+    for(var i=this.vehiclesSquare.length-1;i>=0;i--){
       this.vehiclesSquare[i].run(this.vehiclesSquare);
+      if(this.vehiclesSquare[i].isDead()){
+        this.vehiclesSquare.splice(i, 1);
+      }
+   }
+   if(this.vehiclesSquare.length==0){
+    for(var i=0;i<this.numVehiclesSquare;i++){
+      this.vehiclesSquare.push(new VehicleSquare(new JSVector(Math.random()*this.canvas.width, Math.random()*this.canvas.height)));
+    }
    }
   }
 }
