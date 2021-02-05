@@ -4,9 +4,6 @@ constructor(){
   this.vel = new JSVector(0, 0);
   this.currentCell = ecoSystem.cells[0][0];
   this.clr = "blue";
-  this.rotateClock = false;
-  this.rotateCounterClock = false;
-  this.rotate180 = false;
 
 
   // add an event handler such that the a, s, w, d keys
@@ -19,15 +16,6 @@ constructor(){
                 console.log(actor.vel.getDirection());
                   actor.loc.y-=ecoSystem.cellHeight;
                   actor.currentCell = ecoSystem.cells[actor.currentCell.row-1][actor.currentCell.col];
-                  if(actor.vel.getDirection()==0*Math.PI/180){
-                    actor.rotateCounterClock = true;
-                  }
-                  else if(actor.vel.getDirection()==180*Math.PI/180){
-                    actor.rotateClock = true;
-                  }
-                  else if(actor.vel.getDirection()==270*Math.PI/180){
-                    actor.rotate180 = true;
-                  }
                 }
               break;
           case "KeyS":
@@ -35,15 +23,6 @@ constructor(){
                 console.log(actor.vel.getDirection());
                   actor.loc.y+=ecoSystem.cellHeight;
                   actor.currentCell = ecoSystem.cells[actor.currentCell.row+1][actor.currentCell.col];
-                  if(actor.vel.getDirection()==0*Math.PI/180){
-                    actor.rotateClock = true;
-                  }
-                  else if(actor.vel.getDirection()==180*Math.PI/180){
-                    actor.rotateCounterClock = true;
-                  }
-                  else if(actor.vel.getDirection()==90*Math.PI/180){
-                    actor.rotate180 = true;
-                  }
                 }
               break;
           case "KeyA":
@@ -51,20 +30,12 @@ constructor(){
                 console.log(actor.vel.getDirection());
                   actor.loc.x-=ecoSystem.cellWidth;
                   actor.currentCell = ecoSystem.cells[actor.currentCell.row][actor.currentCell.col-1];
-                  if(actor.vel.getDirection()!=180*Math.PI/180){
-                    actor.vel.setDirection(180*Math.PI/180);
-                    actor.rotate = true;
-                  }
                 }
               break;
           case "KeyD":
               if (actor.currentCell.neighbors.e != null){
                   actor.loc.x+=ecoSystem.cellWidth;
                   actor.currentCell = ecoSystem.cells[actor.currentCell.row][actor.currentCell.col+1];
-                  if(actor.vel.getDirection()!=0*Math.PI/180){
-                    actor.vel.setDirection(0*Math.PI/180);
-                    actor.rotate = true;
-                  }
                 }
               break;
       }
@@ -82,19 +53,10 @@ render(){
   ctx.fillStyle = this.clr;
   ctx.beginPath();
   ctx.translate(this.loc.x, this.loc.y);
-  if(this.rotate){
-    ctx.rotate(this.vel.getDirection());
-  }
-  ctx.moveTo(-5*4, -10*4);
-  ctx.lineTo(0, -7*4);
-  ctx.lineTo(5*4, -10*4);
-  ctx.lineTo(0, 0);
+  ctx.arc(0, 0, 20, 0, 2 * Math.PI);
   ctx.stroke();
   ctx.fill();
   ctx.restore();
 
 }
-
-
-
 }
