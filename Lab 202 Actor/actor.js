@@ -5,7 +5,7 @@ constructor(){
   this.currentCell = ecoSystem.cells[0][0];
   this.clr = "blue";
   this.rotateClock = false;
-  this.rotateCC = false;
+  this.rotateCounterClock = false;
   this.rotate180 = false;
 
 
@@ -16,10 +16,11 @@ constructor(){
       switch (event.code) {
           case "KeyW":
               if (actor.currentCell.neighbors.n != null){
+                console.log(actor.vel.getDirection());
                   actor.loc.y-=ecoSystem.cellHeight;
                   actor.currentCell = ecoSystem.cells[actor.currentCell.row-1][actor.currentCell.col];
                   if(actor.vel.getDirection()==0*Math.PI/180){
-                    actor.rotateCC = true;
+                    actor.rotateCounterClock = true;
                   }
                   else if(actor.vel.getDirection()==180*Math.PI/180){
                     actor.rotateClock = true;
@@ -31,13 +32,14 @@ constructor(){
               break;
           case "KeyS":
               if (actor.currentCell.neighbors.s != null){
+                console.log(actor.vel.getDirection());
                   actor.loc.y+=ecoSystem.cellHeight;
                   actor.currentCell = ecoSystem.cells[actor.currentCell.row+1][actor.currentCell.col];
                   if(actor.vel.getDirection()==0*Math.PI/180){
                     actor.rotateClock = true;
                   }
                   else if(actor.vel.getDirection()==180*Math.PI/180){
-                    actor.rotateCC = true;
+                    actor.rotateCounterClock = true;
                   }
                   else if(actor.vel.getDirection()==90*Math.PI/180){
                     actor.rotate180 = true;
@@ -46,6 +48,7 @@ constructor(){
               break;
           case "KeyA":
               if (actor.currentCell.neighbors.w != null){
+                console.log(actor.vel.getDirection());
                   actor.loc.x-=ecoSystem.cellWidth;
                   actor.currentCell = ecoSystem.cells[actor.currentCell.row][actor.currentCell.col-1];
                   if(actor.vel.getDirection()!=180*Math.PI/180){
@@ -63,7 +66,6 @@ constructor(){
                     actor.rotate = true;
                   }
                 }
-              break;
               break;
       }
   }, false);
