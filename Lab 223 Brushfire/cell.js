@@ -13,7 +13,7 @@ class Cell {
         this.parent = null;
         this.clr;
         if(r==game.numRows-1 && c==game.numCols-1){
-          this.clr = "blue"
+          this.clr = "green"
         }
         else if(this.occupied == true){
           this.clr = "red"
