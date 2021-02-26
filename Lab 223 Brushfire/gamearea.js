@@ -1,5 +1,3 @@
-// GameArea class to create all the DOM elements in code rather than html
-
 function GameArea(){
     //  create Wrapper Div
     let wrapperDiv = document.createElement("div");

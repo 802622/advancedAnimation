@@ -39,17 +39,6 @@ class Cell {
       ctx.fill();
       ctx.stroke();
 
-
-      // ctx.font = "10px sans-serif";
-      // ctx.strokeText(this.dist, this.loc.x+5, this.loc.y+30);
-      // ctx.stroke();
-      // ctx.beginPath();
-      // ctx.moveTo(this.center.x, this.center.y);
-      // if(this.parent){
-      //   ctx.lineTo(this.parent.center.x, this.parent.center.y);
-      //   ctx.stroke();
-      // }
-
     }
 
     loadNeighbors(){
